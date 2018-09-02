@@ -1,10 +1,5 @@
 let numberModel= {};
 
-numberModel.mult = (x, y) => {
-    console.log('x', x, 'y', y);
-    return x * y;
-}
-
 
 function Unidades(num){
 

@@ -1,18 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
-const demo = require('../tools/numberEs');
+const number_literal = require('../tools/numberEs');
 
 
-router.get('/', (req, res) => {
-    const { number_value, lang_value } = req.headers;
-    console.log('demo: ', demo.mult(4,50));
-    console.log('valor: ', demo.NumeroALetras(number_value));
-    //console.log('number value: ', number_value, 'lang: ', lang_value);
+router.get('/esES', (req, res) => {
+
+    const { number_value, plural, singular, centPlural, centSingular } = req.headers;
 
     if( !isNaN(number_value)){
         res.json({
-            number_literal: number_value
+            number_literal: number_literal.NumeroALetras(number_value, 
+                {
+                plural: plural,
+                singular: singular,
+                centPlural: centPlural,
+                centSingular: centSingular
+            }
+        )
         });
     } else {
         res.send('error');
